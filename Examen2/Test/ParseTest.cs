@@ -94,19 +94,34 @@ namespace Examen2.Test
 
             tokens.Add(new Token("ID", TokenType.String));
             tokens.Add(new Token(",", TokenType.Delimiter));
-            tokens.Add(new Token("25", TokenType.Integer));
+            tokens.Add(new Token("NAME", TokenType.String));
             tokens.Add(new Token(",", TokenType.Delimiter));
-            tokens.Add(new Token("#03-25-1994#", TokenType.Date));
+            tokens.Add(new Token("DATE", TokenType.String));
+            tokens.Add(new Token("\n", TokenType.EndOfLine));
+            tokens.Add(new Token("1", TokenType.Integer));
+            tokens.Add(new Token(",", TokenType.Delimiter));
+            tokens.Add(new Token("BRANDON", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
+            tokens.Add(new Token("#03/25/1994#", TokenType.Date));
             tokens.Add(new Token("\n", TokenType.EndOfLine));
 
-            ParserOutput output = parser.ParseRow(tokens);
-            CsvTree row = (CsvTree)output.Result;
+            CsvTree assertion = new CsvTree();
 
-            CsvRow assertion = new CsvRow();
-            assertion.addValue(new CsvString("ID"));
-            assertion.addValue(new CsvInteger("25"));
-            assertion.addValue(new CsvDate("#03-25-1994#"));
-            Assert.AreEqual(row, assertion);
+            CsvHeader headers = new CsvHeader();
+            headers.addHeader("ID");
+            headers.addHeader("NAME");
+            headers.addHeader("DATE");
+
+            CsvRow row = new CsvRow();
+            row.addValue(new CsvInteger("1"));
+            row.addValue(new CsvString("BRANDON"));
+            row.addValue(new CsvDate("#03/25/1994#"));
+            assertion.addRow(row);
+            assertion.Headers = headers;
+
+            ParserOutput output = parser.parseCsv(tokens);
+            CsvTree tree = (CsvTree)output.Result;
+            Assert.AreEqual(tree, assertion);
         }
     }
 }

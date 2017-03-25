@@ -23,6 +23,10 @@ namespace Examen2.Parse
                     header.addHeader(current.Lexeme);
                 current = Peak(++cursor, tokens);
             }
+
+            if (current.Type == TokenType.EndOfLine)
+                cursor++;
+
             output.Result = header;
             output.Length = cursor;
             return output;
@@ -61,7 +65,11 @@ namespace Examen2.Parse
             while (cursor < tokens.Count)
             {
                 if (current.Type == TokenType.EndOfLine)
+                {
+                    cursor++;
                     break;
+                }
+                    
 
                 CsvValue value = ParseValue(current);
 
@@ -78,6 +86,33 @@ namespace Examen2.Parse
             output.Result = row;
             output.Length = cursor;
             return output;
+        }
+
+        internal ParserOutput parseCsv(List<Token> tokens)
+        {
+            ParserOutput output = new ParserOutput();
+            int cursor = 0;
+            CsvTree csv = new CsvTree();
+
+            ParserOutput headerOutput = ParseHeaders(tokens);
+            cursor += headerOutput.Length;
+            csv.Headers = (CsvHeader)headerOutput.Result;
+
+
+            while(cursor < tokens.Count)
+            {
+                var skipped = tokens.Skip(cursor).ToList();
+                ParserOutput rowOutput = ParseRow(skipped);
+                CsvRow row = (CsvRow)rowOutput.Result;
+                cursor += rowOutput.Length;
+                csv.addRow(row);
+            }
+            
+
+            output.Result = csv;
+            output.Length = cursor;
+            return output;
+
         }
     }
 }

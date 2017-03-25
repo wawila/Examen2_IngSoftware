@@ -33,11 +33,8 @@ namespace Examen2.Tree
                 return false;
 
             for (int i = 0; i < headers.Count; i++)
-            {
                 if (headers[i] != other.headers[i])
                     return false;
-            }
-
             return true;
         }
     }
