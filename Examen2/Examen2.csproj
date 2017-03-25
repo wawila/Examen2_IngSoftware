@@ -89,10 +89,10 @@
     <Compile Include="Lexer\WhitespaceTokenizer.cs" />
     <Compile Include="Shell.cs" />
     <Compile Include="Lexer\CsvLexer.cs" />
+    <Compile Include="Test\ISourceReader.cs" />
     <Compile Include="Test\LexerTest.cs" />
     <Compile Include="Lexer\Token.cs" />
     <Compile Include="Test\UnitConvertion.cs" />
-    <Compile Include="Test\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

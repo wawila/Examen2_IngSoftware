@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Examen2.Test;
 
 namespace Examen2.Lexical
 {
@@ -10,8 +11,13 @@ namespace Examen2.Lexical
         private int _cursor;
         private int _column;
         private int _row;
-        public CsvLexer()
+        private ISourceReader _sourceReader;
+
+        public CsvLexer(ISourceReader sourceReader)
         {
+            _sourceReader = sourceReader;
+            Source = _sourceReader.Fetch();
+
             tokenizers = new List<Tokenizer>();
             tokenizers.Add(new IntegerTokenizer());
             tokenizers.Add(new DateTokenizer());
@@ -19,7 +25,7 @@ namespace Examen2.Lexical
             tokenizers.Add(new EndOfLineTokenizer());
             tokenizers.Add(new WhitespaceTokenizer());
         }
-
+        
         public override List<Token> Lex()
         {
             List<Token> tokens = new List<Token>();

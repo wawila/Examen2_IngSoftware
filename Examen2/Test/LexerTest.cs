@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Examen2.Lexical;
+using Moq;
 
 namespace Examen2.Test
 {
@@ -12,6 +13,8 @@ namespace Examen2.Test
     [TestClass]
     public class LexerTest
     {
+        private readonly Mock<ISourceReader> _sourceReader= new Mock<ISourceReader>();
+
         public LexerTest()
         {
             //
@@ -62,8 +65,8 @@ namespace Examen2.Test
         [TestMethod]
         public void TokenizeStrings()
         {
-            string source = "ID, NAME, AGE, DATE";
-            CsvLexer lexer = new CsvLexer { Source = source };
+            _sourceReader.Setup(i => i.Fetch()).Returns("ID, NAME, AGE, DATE");
+            CsvLexer lexer = new CsvLexer(_sourceReader.Object);
             List<Token> tokens =  lexer.Lex();
             List<Token> assertion = new List<Token>();
 
@@ -80,8 +83,9 @@ namespace Examen2.Test
         [TestMethod]
         public void TokenizeInteger()
         {
-            string source = "69, 666, 4, 42 ";
-            CsvLexer lexer = new CsvLexer { Source = source };
+
+            _sourceReader.Setup(i => i.Fetch()).Returns("69, 666, 4, 42 ");
+            CsvLexer lexer = new CsvLexer(_sourceReader.Object);
             List<Token> tokens = lexer.Lex();
             List<Token> assertion = new List<Token>();
 
@@ -98,8 +102,8 @@ namespace Examen2.Test
         [TestMethod]
         public void TokenizeRow()
         {
-            string source = "ID, 666 \n SATAN, 69";
-            CsvLexer lexer = new CsvLexer { Source = source };
+            _sourceReader.Setup(i => i.Fetch()).Returns("ID, 666 \n SATAN, 69");
+            CsvLexer lexer = new CsvLexer(_sourceReader.Object);
             List<Token> tokens = lexer.Lex();
             List<Token> assertion = new List<Token>();
 
@@ -117,8 +121,8 @@ namespace Examen2.Test
         [TestMethod]
         public void TokenizeDates()
         {
-            string source = "#03/25/2017#, #02/11/2013#, #06/06/2006#";
-            CsvLexer lexer = new CsvLexer { Source = source };
+            _sourceReader.Setup(i => i.Fetch()).Returns("#03/25/2017#, #02/11/2013#, #06/06/2006#");
+            CsvLexer lexer = new CsvLexer(_sourceReader.Object);
             List<Token> tokens = lexer.Lex();
             List<Token> assertion = new List<Token>();
 
@@ -134,8 +138,8 @@ namespace Examen2.Test
         [TestMethod]
         public void TokenizeCsv()
         {
-            string source = "ID, NAME, AGE, DATE \n 1, Brandon, 66, #03/25/2017# \n 2, David, 69, #05/30/1994# \n";
-            CsvLexer lexer = new CsvLexer { Source = source };
+            _sourceReader.Setup(i => i.Fetch()).Returns("ID, NAME, AGE, DATE \n 1, Brandon, 66, #03/25/2017# \n 2, David, 69, #05/30/1994# \n");
+            CsvLexer lexer = new CsvLexer(_sourceReader.Object);
             List<Token> tokens = lexer.Lex();
             List<Token> assertion = new List<Token>();
 
@@ -160,4 +164,5 @@ namespace Examen2.Test
                 Assert.AreEqual(tokens[i], assertion[i]);
         }
     }
+
 }
