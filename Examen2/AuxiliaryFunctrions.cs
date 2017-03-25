@@ -4,14 +4,24 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Examen2.Test;
 
 namespace Examen2
 {
-    public class AuxiliaryFunctions
+    public class CsvValidator
     {
-        public bool ValidateCSV(string path)
+        private readonly ISourceReader _sourceReader;
+        private readonly string _path;
+
+        public CsvValidator(ISourceReader sourceReader)
         {
-            var lines = File.ReadLines(path);
+            _sourceReader = sourceReader;
+            _path = _sourceReader.Fetch();
+        }
+
+        public bool ValidateCSV()
+        {
+            var lines = File.ReadLines(_path);
 
             var enumerable = lines as string[] ?? lines.ToArray();
             var commaCount = AllIndexesOf(enumerable.First(), ",").Count;

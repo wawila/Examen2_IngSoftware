@@ -14,20 +14,9 @@ namespace Examen2.Test
     public class LexerTest
     {
         private readonly Mock<ISourceReader> _sourceReader= new Mock<ISourceReader>();
-
-        public LexerTest()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
-        }
-
+       
         private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
+        
         public TestContext TestContext
         {
             get
@@ -39,29 +28,7 @@ namespace Examen2.Test
                 testContextInstance = value;
             }
         }
-
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
+    
         [TestMethod]
         public void TokenizeStrings()
         {
@@ -183,6 +150,23 @@ namespace Examen2.Test
             for (int i = 0; i < tokens.Count; i++)
                 Assert.AreEqual(tokens[i], assertion[i]);
         }
-    }
 
+        [TestMethod]
+        public void ValidateCsvCorrect()
+        {
+            _sourceReader.Setup(i => i.Fetch()).Returns("./Bueno.csv");
+            var validator = new CsvValidator(_sourceReader.Object);
+
+            Assert.IsTrue(validator.ValidateCSV());
+        }
+
+        [TestMethod]
+        public void ValidateCsvWrong()
+        {
+            _sourceReader.Setup(i => i.Fetch()).Returns("./Malo.csv");
+            var validator = new CsvValidator(_sourceReader.Object);
+
+            Assert.IsFalse(validator.ValidateCSV());
+        }
+    }
 }
