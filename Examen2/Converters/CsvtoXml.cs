@@ -8,7 +8,7 @@ using Examen2.Tree;
 
 namespace Examen2.Converters
 {
-    public class CsvtoXml
+    public class CsvtoXml : IConverter
     {
         private readonly CsvTree _csvTree;
 
@@ -27,13 +27,18 @@ namespace Examen2.Converters
                 {
                     xml += "\t\t<" + _csvTree.Headers.headers[j] + "> ";
                     xml += row.Values[j].Data;
-                    xml += "</" + _csvTree.Headers.headers[j] + ">\n";
+                    xml += " </" + _csvTree.Headers.headers[j] + ">\n";
                 }
                 xml += "\t</ROW>\n";
             }
 
             xml += "</XML>";
             return xml;
+        }
+
+        public string ConvertCsv()
+        {
+            return ToXML();
         }
     }
 }

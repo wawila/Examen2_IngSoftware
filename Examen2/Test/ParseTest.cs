@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Examen2.Parse;
 using System.Collections.Generic;
+using Examen2.Converters;
 using Examen2.Lexical;
 using Examen2.Tree;
 
@@ -85,7 +86,7 @@ namespace Examen2.Test
             assertion.addValue(new CsvDate("#03-25-1994#"));
             Assert.AreEqual(row, assertion);
         }
-
+        /*
         [TestMethod]
         public void ParseCsv()
         {
@@ -107,6 +108,121 @@ namespace Examen2.Test
             assertion.addValue(new CsvInteger("25"));
             assertion.addValue(new CsvDate("#03-25-1994#"));
             Assert.AreEqual(row, assertion);
+        }
+        */
+
+        [TestMethod]
+        public void ConvertToJson()
+        {
+            var testJson =
+                @"{
+                ""0"":{
+                    ""nombre"": ""david"",
+                    ""id"": 0,
+                    ""fecha"": ""1996-04-23T00:00:00.0000000"" 
+                },
+                ""1"":{
+                    ""nombre"": ""napky"",
+                    ""id"": 1,
+                    ""fecha"": ""1996-04-23T00:00:00.0000000"" 
+                }
+            }".Replace("\r", "").Replace(" ", "");
+
+            var csvTree = new CsvTree
+            {
+                Headers = new CsvHeader
+                {
+                    headers = new List<string>
+                    {
+                        "nombre",
+                        "id",
+                        "fecha"
+                    }
+                },
+                Rows = new List<CsvRow>
+                {
+                    new CsvRow
+                    {
+                        Values = new List<CsvValue>
+                        {
+                            new CsvString("david"),
+                            new CsvInteger("0"),
+                            new CsvDate("#1996-04-23T00:00:00.0000000#")
+                        }
+                    },
+                    new CsvRow
+                    {
+                        Values = new List<CsvValue>
+                        {
+                            new CsvString("napky"),
+                            new CsvInteger("1"),
+                            new CsvDate("#1996-04-23T00:00:00.0000000#")
+                        }
+                    }
+                }
+            };
+
+            var outputjson = new CsvtoJson(csvTree).ToJson().Replace("\t", "");
+
+            Assert.AreEqual(testJson, outputjson);
+
+        }
+
+        [TestMethod]
+        public void ConvertToXML()
+        {
+
+            var testxml =
+            @"<XML>
+                <ROW>
+                    <nombre> david </nombre>
+                    <id> 0 </id>
+                    <fecha> 1996-04-23 </fecha>        
+                </ROW>
+                <ROW>
+                    <nombre> napky </nombre>
+                    <id> 1 </id>
+                    <fecha> 1996-04-23 </fecha>        
+                </ROW>
+            </XML>".Replace("\r", "").Replace(" ", "");
+
+            var csvTree = new CsvTree
+            {
+                Headers = new CsvHeader
+                {
+                    headers = new List<string>
+                    {
+                        "nombre",
+                        "id",
+                        "fecha"
+                    }
+                },
+                Rows = new List<CsvRow>
+                {
+                    new CsvRow
+                    {
+                        Values = new List<CsvValue>
+                        {
+                            new CsvString("david"),
+                            new CsvInteger("0"),
+                            new CsvDate("#1996-04-23T00:00:00.0000000#")
+                        }
+                    },
+                    new CsvRow
+                    {
+                        Values = new List<CsvValue>
+                        {
+                            new CsvString("napky"),
+                            new CsvInteger("1"),
+                            new CsvDate("#1996-04-23T00:00:00.0000000#")
+                        }
+                    }
+                }
+            };
+
+            var outputxml = new CsvtoXml(csvTree).ToXML().Replace("\t", "").Replace(" ", "");
+
+            Assert.AreEqual(testxml, outputxml);
         }
     }
 }

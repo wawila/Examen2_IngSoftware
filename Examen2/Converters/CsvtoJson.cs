@@ -8,7 +8,7 @@ using Examen2.Tree;
 
 namespace Examen2.Converters
 {
-    public class CsvtoJson
+    public class CsvtoJson : IConverter
     {
         private readonly CsvTree _cvsTree;
 
@@ -45,12 +45,21 @@ namespace Examen2.Converters
                     json += getJsonValue(row.Values[j]);
                     json += ",\n";
                 }
-
+                json = json.Remove(json.Length - 2);
+                json += '\n';
+                json += "\t},\n";
                 index++;
             }
 
+            json = json.Remove(json.Length-2);
+            json += '\n';
             json += "}";
             return json;
+        }
+
+        public string ConvertCsv()
+        {
+            return ToJson();
         }
     }
 }
