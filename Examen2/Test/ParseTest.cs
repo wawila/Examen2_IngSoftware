@@ -86,5 +86,27 @@ namespace Examen2.Test
             Assert.AreEqual(row, assertion);
         }
 
+        [TestMethod]
+        public void ParseCsv()
+        {
+            Parser parser = new Parser();
+            List<Token> tokens = new List<Token>();
+
+            tokens.Add(new Token("ID", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
+            tokens.Add(new Token("25", TokenType.Integer));
+            tokens.Add(new Token(",", TokenType.Delimiter));
+            tokens.Add(new Token("#03-25-1994#", TokenType.Date));
+            tokens.Add(new Token("\n", TokenType.EndOfLine));
+
+            ParserOutput output = parser.ParseRow(tokens);
+            CsvTree row = (CsvTree)output.Result;
+
+            CsvRow assertion = new CsvRow();
+            assertion.addValue(new CsvString("ID"));
+            assertion.addValue(new CsvInteger("25"));
+            assertion.addValue(new CsvDate("#03-25-1994#"));
+            Assert.AreEqual(row, assertion);
+        }
     }
 }
