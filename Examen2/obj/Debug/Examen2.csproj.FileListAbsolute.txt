@@ -1,0 +1,14 @@
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Examen2.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Examen2.pdb
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\obj\Debug\Examen2.csprojResolveAssemblyReference.cache
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\obj\Debug\Examen2.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\obj\Debug\Examen2.pdb
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Examen2.dll.config
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Autofac.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Castle.Core.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Moq.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\TechTalk.SpecFlow.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Autofac.xml
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Castle.Core.xml
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Moq.xml
