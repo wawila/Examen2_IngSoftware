@@ -90,13 +90,18 @@
     <Compile Include="Lexer\WhitespaceTokenizer.cs" />
     <Compile Include="Shell.cs" />
     <Compile Include="Lexer\CsvLexer.cs" />
+    <Compile Include="Tree\CsvDate.cs" />
+    <Compile Include="Tree\CsvHeaders.cs" />
     <Compile Include="Test\ISourceReader.cs" />
     <Compile Include="Test\LexerTest.cs" />
     <Compile Include="Lexer\Token.cs" />
     <Compile Include="Parse\Parser.cs" />
     <Compile Include="Test\UnitConvertion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\UnitTest1.cs" />
+    <Compile Include="Test\ParseTest.cs" />
+    <Compile Include="Tree\CsvInteger.cs" />
+    <Compile Include="Tree\CsvString.cs" />
+    <Compile Include="Tree\CsvValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -105,6 +110,9 @@
       <LastGenOutput>ConvertionFeatures.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
+    <None Include="Tree\OrderedTest1.orderedtest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Choose>

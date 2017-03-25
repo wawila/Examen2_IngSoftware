@@ -42,6 +42,14 @@ namespace Examen2.Test
             CsvValue stringValue = parser.ParseValue(word);
             CsvValue intValue = parser.ParseValue(number);
             CsvValue dateValue = parser.ParseValue(date);
+
+            CsvString assertStringValue = new CsvString("ID");
+            CsvInteger assertIntValue = new CsvInteger("666");
+            CsvDate assertDateValue = new CsvDate("#03/25/2017#");
+
+            Assert.AreEqual(assertDateValue, dateValue);
+            Assert.AreEqual(assertIntValue, intValue);
+            Assert.AreEqual(assertDateValue, dateValue);
         }
 
     }
