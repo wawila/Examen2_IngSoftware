@@ -7,6 +7,7 @@
         EndOfLine,
         Whitespace,
         Date,
-        Delimiter
+        Delimiter,
+        Number
     }
 }
