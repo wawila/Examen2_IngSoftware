@@ -17,11 +17,15 @@ namespace Examen2.Test
             List<Token> tokens = new List<Token>();
 
             tokens.Add(new Token("ID", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
             tokens.Add(new Token("AGE", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
             tokens.Add(new Token("DATE", TokenType.String));
             tokens.Add(new Token("\n", TokenType.EndOfLine));
             tokens.Add(new Token("1", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
             tokens.Add(new Token("25", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
             tokens.Add(new Token("#03-25-1994#", TokenType.String));
 
             List<String> headers = new List<string>();
@@ -57,6 +61,29 @@ namespace Examen2.Test
             Assert.AreEqual(assertDateValue, dateValue);
             Assert.AreEqual(assertIntValue, intValue);
             Assert.AreEqual(assertDateValue, dateValue);
+        }
+
+        [TestMethod]
+        public void ParseRow()
+        {
+            Parser parser = new Parser();
+            List<Token> tokens = new List<Token>();
+
+            tokens.Add(new Token("ID", TokenType.String));
+            tokens.Add(new Token(",", TokenType.Delimiter));
+            tokens.Add(new Token("25", TokenType.Integer));
+            tokens.Add(new Token(",", TokenType.Delimiter));
+            tokens.Add(new Token("#03-25-1994#", TokenType.Date));
+            tokens.Add(new Token("\n", TokenType.EndOfLine));
+
+            ParserOutput output = parser.ParseRow(tokens);
+            CsvRow row = (CsvRow)output.Result;
+
+            CsvRow assertion = new CsvRow();
+            assertion.addValue(new CsvString("ID"));
+            assertion.addValue(new CsvInteger("25"));
+            assertion.addValue(new CsvDate("#03-25-1994#"));
+            Assert.AreEqual(row, assertion);
         }
 
     }

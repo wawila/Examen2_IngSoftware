@@ -46,6 +46,9 @@ namespace Examen2.Lexical
                     token = output.Token;
                     _cursor += output.Length;
 
+                    token.Row = _row;
+                    token.Column = _column;
+
                     if(token.Type != TokenType.Whitespace)
                         tokens.Add(token);
 

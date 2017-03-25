@@ -19,7 +19,8 @@ namespace Examen2.Parse
             Token current = Peak(cursor, tokens);
             while(cursor < tokens.Count && current.Type != TokenType.EndOfLine)
             {
-                header.addHeader(current.Lexeme);
+                if(current.Type != TokenType.Delimiter)
+                    header.addHeader(current.Lexeme);
                 current = Peak(++cursor, tokens);
             }
             output.Result = header;
@@ -49,6 +50,34 @@ namespace Examen2.Parse
                     break;
             }
             return value;
+        }
+
+        public ParserOutput ParseRow(List<Token> tokens)
+        {
+            int cursor = 0;
+            CsvRow row = new CsvRow();
+            ParserOutput output = new ParserOutput();
+            Token current = Peak(cursor, tokens);
+            while (cursor < tokens.Count)
+            {
+                if (current.Type == TokenType.EndOfLine)
+                    break;
+
+                CsvValue value = ParseValue(current);
+
+                if (value == null)
+                    throw new InvalidToken($"Invalid token at ({current.Row}, {current.Column})");
+
+                current = Peak(++cursor, tokens);
+
+                if(current.Type != TokenType.Delimiter && current.Type != TokenType.EndOfLine)
+                    throw new InvalidToken($"Invalid token at ({current.Row}, {current.Column}), Expected token: Delimiter");
+                current = Peak(++cursor, tokens);
+                row.addValue(value);
+            }
+            output.Result = row;
+            output.Length = cursor;
+            return output;
         }
     }
 }

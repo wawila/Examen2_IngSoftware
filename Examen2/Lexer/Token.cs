@@ -13,6 +13,9 @@ namespace Examen2.Lexical
             this.Type = type;
         }
 
+        public int Row { get;  set; }
+        public int Column { get; set; }
+
         public override bool Equals(object obj)
         {
             if (!(obj is Token))

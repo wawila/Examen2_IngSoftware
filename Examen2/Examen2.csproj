@@ -88,9 +88,11 @@
     <Compile Include="Lexer\TokenizerOutput.cs" />
     <Compile Include="Lexer\TokenType.cs" />
     <Compile Include="Lexer\WhitespaceTokenizer.cs" />
+    <Compile Include="Parse\InvalidToken.cs" />
     <Compile Include="Parse\ParserOutput.cs" />
     <Compile Include="Shell.cs" />
     <Compile Include="Lexer\CsvLexer.cs" />
+    <Compile Include="Test\CsvRow.cs" />
     <Compile Include="Tree\CsvDate.cs" />
     <Compile Include="Tree\CsvHeaders.cs" />
     <Compile Include="Test\ISourceReader.cs" />
