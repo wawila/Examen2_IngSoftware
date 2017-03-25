@@ -77,7 +77,20 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConvertionFeatures.feature</DependentUpon>
     </Compile>
+    <Compile Include="Lexer\DateTokenizer.cs" />
+    <Compile Include="Lexer\EndOfLineTokenizer.cs" />
+    <Compile Include="Lexer\IllegalTokenException.cs" />
+    <Compile Include="Lexer\IntegerTokenizer.cs" />
+    <Compile Include="Lexer\Lexer.cs" />
+    <Compile Include="Lexer\StringTokenizer.cs" />
+    <Compile Include="Lexer\Tokenizer.cs" />
+    <Compile Include="Lexer\TokenizerOutput.cs" />
+    <Compile Include="Lexer\TokenType.cs" />
+    <Compile Include="Lexer\WhitespaceTokenizer.cs" />
     <Compile Include="Shell.cs" />
+    <Compile Include="Lexer\CsvLexer.cs" />
+    <Compile Include="Test\LexerTest.cs" />
+    <Compile Include="Lexer\Token.cs" />
     <Compile Include="Test\UnitConvertion.cs" />
     <Compile Include="Test\UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
