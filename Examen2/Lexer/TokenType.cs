@@ -6,6 +6,7 @@
         Integer,
         EndOfLine,
         Whitespace,
-        Date
+        Date,
+        Delimiter
     }
 }

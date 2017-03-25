@@ -9,7 +9,7 @@ namespace Examen2.Lexical
             int cursor = 0;
             Char current = source[cursor];
             string lexeme = "";
-            while (cursor < source.Length && (Char.IsWhiteSpace(current) || current == ',') && current != '\n')
+            while (cursor < source.Length && (Char.IsWhiteSpace(current)) && current != '\n')
             {
                 lexeme += current;
                 current = Peak(++cursor, source);

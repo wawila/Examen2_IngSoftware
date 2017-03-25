@@ -23,6 +23,7 @@ namespace Examen2.Lexical
             tokenizers.Add(new DateTokenizer());
             tokenizers.Add(new StringTokenizer());
             tokenizers.Add(new EndOfLineTokenizer());
+            tokenizers.Add(new DelimiterTokenizer());
             tokenizers.Add(new WhitespaceTokenizer());
         }
         
