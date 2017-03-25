@@ -21,5 +21,24 @@ namespace Examen2.Test
         {
             return index > headers.Count ? headers[index] : null;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is CsvHeader))
+                return false;
+
+            CsvHeader other = (CsvHeader)obj;
+
+            if (headers.Count != other.headers.Count)
+                return false;
+
+            for (int i = 0; i < headers.Count; i++)
+            {
+                if (headers[i] != other.headers[i])
+                    return false;
+            }
+
+            return true;
+        }
     }
 }

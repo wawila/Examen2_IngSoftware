@@ -11,9 +11,25 @@ namespace Examen2.Parse
 {
     public class Parser
     {
-        internal CsvHeader ParseHeaders(List<Token> tokens)
+        internal ParserOutput ParseHeaders(List<Token> tokens)
         {
-            return null;
+            int cursor = 0;
+            CsvHeader header = new CsvHeader();
+            ParserOutput output = new ParserOutput();
+            Token current = Peak(cursor, tokens);
+            while(cursor < tokens.Count && current.Type != TokenType.EndOfLine)
+            {
+                header.addHeader(current.Lexeme);
+                current = Peak(++cursor, tokens);
+            }
+            output.Result = header;
+            output.Length = cursor;
+            return output;
+        }
+
+        private Token Peak(int cursor, List<Token> tokens)
+        {
+            return cursor < tokens.Count ? tokens[cursor] : tokens[tokens.Count - 1];
         }
 
         public CsvValue ParseValue(Token token)

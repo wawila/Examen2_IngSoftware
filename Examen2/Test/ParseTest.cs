@@ -19,14 +19,21 @@ namespace Examen2.Test
             tokens.Add(new Token("ID", TokenType.String));
             tokens.Add(new Token("AGE", TokenType.String));
             tokens.Add(new Token("DATE", TokenType.String));
+            tokens.Add(new Token("\n", TokenType.EndOfLine));
+            tokens.Add(new Token("1", TokenType.String));
+            tokens.Add(new Token("25", TokenType.String));
+            tokens.Add(new Token("#03-25-1994#", TokenType.String));
 
             List<String> headers = new List<string>();
 
-            CsvHeader header = parser.ParseHeaders(tokens);
+            ParserOutput output = parser.ParseHeaders(tokens);
+            CsvHeader header = (CsvHeader)output.Result;
             CsvHeader assertion = new CsvHeader();
             assertion.addHeader("ID");
             assertion.addHeader("AGE");
             assertion.addHeader("DATE");
+
+            Assert.AreEqual(header,assertion);
         }
 
         [TestMethod]
