@@ -12,3 +12,5 @@ C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug
 C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Autofac.xml
 C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Castle.Core.xml
 C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Moq.xml
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\nunit.framework.dll
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\nunit.framework.xml
