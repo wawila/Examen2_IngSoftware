@@ -72,11 +72,8 @@
   <ItemGroup>
     <Compile Include="AuxiliaryFunctrions.cs" />
     <Compile Include="Commands.cs" />
-    <Compile Include="ConvertionFeatures.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ConvertionFeatures.feature</DependentUpon>
-    </Compile>
+    <Compile Include="Converters\CsvtoJson.cs " />
+    <Compile Include="Converters\CsvtoXml.cs " />
     <Compile Include="Lexer\DelimiterTokenizer.cs" />
     <Compile Include="Lexer\DateTokenizer.cs" />
     <Compile Include="Lexer\EndOfLineTokenizer.cs" />
@@ -92,7 +89,6 @@
     <Compile Include="Parse\ParserOutput.cs" />
     <Compile Include="Shell.cs" />
     <Compile Include="Lexer\CsvLexer.cs" />
-    <Compile Include="Test\CsvRow.cs" />
     <Compile Include="Tree\CsvDate.cs" />
     <Compile Include="Tree\CsvHeaders.cs" />
     <Compile Include="Test\ISourceReader.cs" />
@@ -103,15 +99,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test\ParseTest.cs" />
     <Compile Include="Tree\CsvInteger.cs" />
+    <Compile Include="Tree\CsvRow.cs" />
     <Compile Include="Tree\CsvString.cs" />
+    <Compile Include="Tree\CsvTree.cs" />
     <Compile Include="Tree\CsvValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ConvertionFeatures.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ConvertionFeatures.feature.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="Tree\OrderedTest1.orderedtest">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

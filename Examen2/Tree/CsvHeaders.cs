@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Examen2.Test
+namespace Examen2.Tree
 {
     public class CsvHeader
     {

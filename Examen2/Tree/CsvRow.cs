@@ -2,7 +2,7 @@
 using Examen2.Tree;
 using System.Collections.Generic;
 
-namespace Examen2.Test
+namespace Examen2.Tree
 {
     public class CsvRow
     {

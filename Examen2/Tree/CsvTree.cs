@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Examen2.Test
+namespace Examen2.Tree
 {
-    class CsvTree
+    public class CsvTree
     {
-        public CsvHeader Header { get; set; }
-        public List<CsvRow> MyProperty { get; set; }
+        public CsvHeader Headers { get; set; }
+        public List<CsvRow> Rows { get; set; }
     }
 }

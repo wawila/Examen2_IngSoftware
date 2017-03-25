@@ -4,51 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Examen2.Lexical;
+using Examen2.Tree;
 
 namespace Examen2.Converters
 {
     public class CsvtoXml
     {
-        private readonly List<Token> _headers;
-        private readonly List<List<Token>> _rows;
+        private readonly CsvTree _csvTree;
 
-        public CsvtoXml(List<Token> headers, List<List<Token>> rows)
+        public CsvtoXml(CsvTree csvTree)
         {
-            _headers = headers;
-            _rows = rows;
+            this._csvTree = csvTree;
         }
-
-        private string getJsonValue(Token token)
-        {
-            switch (token.Type)
-            {
-                case TokenType.Date:
-                    return '\"' + DateTime.Parse(token.Lexeme).ToString("o") + '\"';
-                case TokenType.Number:
-                    return token.Lexeme;
-            }
-            return '\"' + token.Lexeme + '\"';
-        }
-
+        
         public string ToXML()
         {
-            var json = "<XML>\n";
-            foreach (var t in _rows)
+            var xml = "<XML>\n";
+            foreach (var row in _csvTree.Rows)
             {
-                json += "\t<ROW>\n";
-                for (var j = 0; j < _rows[0].Count; j++)
+                xml += "\t<ROW>\n";
+                for (var j = 0; j < row.Values.Count; j++)
                 {
-                    json += "\t\t<" + _headers[j].Lexeme + "> ";
-                    json += getJsonValue(t[j]);
-                    json += "</" + _headers[j].Lexeme + ">\n";
+                    xml += "\t\t<" + _csvTree.Headers.headers[j] + "> ";
+                    xml += row.Values[j].Data;
+                    xml += "</" + _csvTree.Headers.headers[j] + ">\n";
                 }
-                json += "\t</ROW>\n";
+                xml += "\t</ROW>\n";
             }
 
-            json += "</XML>";
-            return json;
+            xml += "</XML>";
+            return xml;
         }
-
     }
 }
 

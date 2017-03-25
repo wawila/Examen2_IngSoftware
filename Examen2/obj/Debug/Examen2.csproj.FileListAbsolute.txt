@@ -31,3 +31,4 @@ C:\Users\napky\Documents\Visual Studio 2017\Projects\Examen2_IngSoftware\Examen2
 C:\Users\napky\Documents\Visual Studio 2017\Projects\Examen2_IngSoftware\Examen2\obj\Debug\Examen2.dll
 C:\Users\napky\Documents\Visual Studio 2017\Projects\Examen2_IngSoftware\Examen2\obj\Debug\Examen2.pdb
 C:\Users\napky\Documents\Visual Studio 2017\Projects\Examen2_IngSoftware\Examen2\bin\Debug\Tree\OrderedTest1.orderedtest
+C:\Users\David Chavarria\Documents\Unitec\Ing Software\Examen2\Examen2\bin\Debug\Tree\OrderedTest1.orderedtest
