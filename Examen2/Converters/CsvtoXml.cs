@@ -8,7 +8,7 @@ using Examen2.Tree;
 
 namespace Examen2.Converters
 {
-    public class CsvtoXml : IConverter
+    public class CsvtoXml : ICVSConverter
     {
         private readonly CsvTree _csvTree;
 

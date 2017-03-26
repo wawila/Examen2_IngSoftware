@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="AuxiliaryFunctrions.cs" />
     <Compile Include="Commands.cs" />
+    <Compile Include="Converters\ICVSConverter.cs" />
     <Compile Include="Converters\CsvtoJson.cs " />
     <Compile Include="Converters\CsvtoXml.cs " />
     <Compile Include="Lexer\DelimiterTokenizer.cs" />

@@ -8,7 +8,7 @@ using Examen2.Tree;
 
 namespace Examen2.Converters
 {
-    public class CsvtoJson : IConverter
+    public class CsvtoJson : ICVSConverter
     {
         private readonly CsvTree _cvsTree;
 
